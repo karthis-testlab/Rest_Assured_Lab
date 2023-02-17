@@ -1,5 +1,7 @@
 package com.linkedin.rest.assured.article.two;
 
+import static org.hamcrest.Matchers.equalTo;
+
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 
@@ -11,8 +13,9 @@ public class ValidateGetCallResponse {
 		.when()
 		    .get("https://simple-books-api.glitch.me")
 		.then()
-		    .log()
-		    .body();
+		    .assertThat()
+		    .statusCode(200)
+		    .body("message", equalTo("Welcome to the Simple Books API."));
 	}
 
 }

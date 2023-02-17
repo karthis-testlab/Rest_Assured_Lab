@@ -2,19 +2,19 @@ package com.linkedin.rest.assured.article.two;
 
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+
 
 public class GetCallPrintResponse {
 	
 	@Test
-	public void validateWelcomeMessage() {
+	public void validateWelcomeMessage() {	
+		String endpoint = "https://simple-books-api.glitch.me";
 		given()
 		.when()
-		    .get("https://simple-books-api.glitch.me")
+		    .get(endpoint)		    
 		.then()
-		    .assertThat()
-		    .statusCode(200)
-		    .body("message", equalTo("Welcome to the Simple Books API."));
+		    .log()
+		    .body();
 	}
 
 }
